@@ -132,6 +132,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "billing_front:build:production",
+            "firebaseProject": "weeb-billing",
+            "firebaseHostingSite": "weeb-billing"
+          }
         }
       }
     }

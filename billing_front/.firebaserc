@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "weeb-billing": {
+      "hosting": {
+        "billing_front": [
+          "weeb-billing"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "weeb-billing"
+  }
+}
