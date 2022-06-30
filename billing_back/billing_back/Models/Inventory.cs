@@ -7,10 +7,10 @@ namespace billing_back.Models
 {
     public class Inventory
     {
-        public int? idProduct { get; set; }
-        public string? productName { get; set; }
-        public float? productPrice { get; set; }
-        public int? productNumUnits { get; set; }
+        public int IdProduct { get; }
+        public string? ProductName { get; set; }
+        public float? ProductPrice { get; set; }
+        public int? ProductNumUnits { get; set; }
 
         
     }

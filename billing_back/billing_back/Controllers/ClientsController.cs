@@ -15,9 +15,6 @@ namespace billing_back.Controllers
     public class ClientsController : ControllerBase
     {
 
-        // GET: portfolioPost/5
-        
-
         private readonly WeebBillingContext _context;
 
         public ClientsController(WeebBillingContext context)
@@ -30,14 +27,14 @@ namespace billing_back.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
-            var producto = await _context.Client.FindAsync(id);
+            var client = await _context.Client.FindAsync(id);
 
-            if (producto == null)
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return producto;
+            return client;
         }
 
         // POST: api/Clients
@@ -47,7 +44,7 @@ namespace billing_back.Controllers
             _context.Client.Add(client);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClient", new { id = client.idClient }, client);
+            return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
         }
 
     }

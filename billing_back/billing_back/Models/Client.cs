@@ -7,13 +7,13 @@ namespace billing_back.Models
 {
     public class Client
     {
-        public int? idClient { get; set; }
-        public string? name1 { get; set; }
-        public string? name2 { get; set; }
-        public string? lastName1 { get; set; }
-        public string? lastName2 { get; set; }
-        public DateTime? birthDate { get; set; }
-        public int? identNum { get; set; }
+        public int IdClient { get; }
+        public string? Name1 { get; set; }
+        public string? Name2 { get; set; }
+        public string? LastName1 { get; set; }
+        public string? LastName2 { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public int? IdentNum { get; set; }
 
     }
 }
