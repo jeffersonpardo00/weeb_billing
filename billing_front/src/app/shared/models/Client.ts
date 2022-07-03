@@ -1,22 +1,22 @@
 export interface Client {
 
-  IdClient: number;
-  Name1: string;
-  Name2: string;
-  LastName1: string;
-  LastName2: string;
-  BirthDate: Date;
-  IdentNum: number;
+  idClient: number;
+  name1: string;
+  name2: string;
+  lastName1: string;
+  lastName2: string;
+  birthDate: Date;
+  identNum: number;
 
 }
 
 export const ClientNull: Client =
 {
-  IdClient: 0,
-  Name1: "",
-  Name2: "",
-  LastName1: "",
-  LastName2: "",
-  BirthDate: new Date("01/01/1900"),
-  IdentNum: 0
+  idClient: 0,
+  name1: "",
+  name2: "",
+  lastName1: "",
+  lastName2: "",
+  birthDate: new Date("01/01/1900"),
+  identNum: 0
 }

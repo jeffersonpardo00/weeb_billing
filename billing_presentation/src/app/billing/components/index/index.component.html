@@ -1,26 +1,28 @@
-<p>index works!</p>
-
-<div class="content-block dx-card responsive-paddings">
-
-<dx-form id="form"
-  [formData]="client"
-  labelLocation="top"
-  [colCountByScreen]="colCountByScreen"
-  >
-      <dxi-item dataField="Name1"></dxi-item>
-      <dxi-item dataField="Name2"></dxi-item>
-      <dxi-item dataField="LastName1"></dxi-item>
-      <dxi-item dataField="LastName2"></dxi-item>
-      <dxi-item dataField="BirthDate"></dxi-item>
-      <dxi-item dataField="IdentNum"></dxi-item>
-  </dx-form>
+<div *ngIf="mostrar">
+  <form [formGroup]= "form" (ngSubmit)="createClient($event)">
+    <input placeholder="Name1" formControlName = "Name1" type="text">
+    <input placeholder="Name2" formControlName = "Name2" type="text">
+  </form>
+</div>
 
 
 
+  <div class="content-block dx-card responsive-paddings">
 
+    <dx-form id="form"
+    [formData]="client"
+    labelLocation="top"
+    [colCountByScreen]="colCountByScreen"
+    >
+        <dxi-item dataField="Name1"></dxi-item>
+        <dxi-item dataField="Name2"></dxi-item>
+        <dxi-item dataField="LastName1"></dxi-item>
+        <dxi-item dataField="LastName2"></dxi-item>
+        <dxi-item dataField="BirthDate"></dxi-item>
+        <dxi-item dataField="IdentNum"></dxi-item>
+    </dx-form>
 
 <!--
-
   <dx-form *ngIf="thereISClient" id="form"
   [formData]="client"
   labelLocation="top"
