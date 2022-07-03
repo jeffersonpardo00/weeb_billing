@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BillingRoutingModule } from './billing-routing.module';
 import { IndexComponent } from './components/index/index.component';
-
+import { DxButtonModule, DxFormModule} from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,9 @@ import { IndexComponent } from './components/index/index.component';
   ],
   imports: [
     CommonModule,
-    BillingRoutingModule
+    BillingRoutingModule,
+    DxButtonModule,
+    DxFormModule
   ]
 })
 export class BillingModule { }

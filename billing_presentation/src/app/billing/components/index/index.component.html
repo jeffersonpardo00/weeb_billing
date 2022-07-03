@@ -1,1 +1,89 @@
 <p>index works!</p>
+
+<div class="content-block dx-card responsive-paddings">
+
+<dx-form id="form"
+  [formData]="client"
+  labelLocation="top"
+  [colCountByScreen]="colCountByScreen"
+  >
+      <dxi-item dataField="Name1"></dxi-item>
+      <dxi-item dataField="Name2"></dxi-item>
+      <dxi-item dataField="LastName1"></dxi-item>
+      <dxi-item dataField="LastName2"></dxi-item>
+      <dxi-item dataField="BirthDate"></dxi-item>
+      <dxi-item dataField="IdentNum"></dxi-item>
+  </dx-form>
+
+
+
+
+
+<!--
+
+  <dx-form *ngIf="thereISClient" id="form"
+  [formData]="client"
+  labelLocation="top"
+  [colCountByScreen]="colCountByScreen"
+  >
+      <dxi-item dataField="Name1"></dxi-item>
+      <dxi-item dataField="Name2"></dxi-item>
+      <dxi-item dataField="LastName1"></dxi-item>
+      <dxi-item dataField="LastName2"></dxi-item>
+      <dxi-item dataField="BirthDate"></dxi-item>
+      <dxi-item dataField="IdentNum"></dxi-item>
+  </dx-form>
+
+  <form action="your-action" (submit)="createClient($event)">
+  <dx-form
+    id="form"
+    [formData]="client"
+    [showColonAfterLabel]="true"
+    [showValidationSummary]="true"
+    validationGroup="customerData"
+  >
+
+    <dxi-item itemType="group" caption="Personal Data">
+      <dxi-item [dataField]="client.Name1">
+       <dxi-validation-rule type="required" message="Name is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="pattern"
+          [pattern]="namePattern"
+          message="Do not use digits in the Name"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item
+        dataField="BirthDate"
+        editorType="dxDateBox"
+        [editorOptions]="{
+          invalidDateMessage:
+            'The date must have the following format: MM/dd/yyyy'
+        }"
+      >
+        <dxo-label text="Date of birth"> </dxo-label>
+        <dxi-validation-rule
+          type="required"
+          message="Date of birth is required"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="range"
+          [max]="maxDate"
+          message="You must be at least 21 years old"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+    </dxi-item>
+
+    <dxi-item
+      itemType="button"
+      horizontalAlignment="left"
+      [buttonOptions]="buttonOptions"
+    >
+    </dxi-item>
+  </dx-form>
+ </form> -->
+
+</div>
