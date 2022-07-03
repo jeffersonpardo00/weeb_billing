@@ -9,7 +9,7 @@ namespace billing_back
 {
     public partial class WeebBillingContext : DbContext
     {
-       
+        private static readonly IConfiguration _configuration;
         string ConnectionString = _configuration.GetConnectionString("conexionBDjeff");
 
         public WeebBillingContext(DbContextOptions<WeebBillingContext> options) : base(options)
