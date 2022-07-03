@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -10,6 +10,7 @@ import {
   DxFormModule,
   DxFormComponent,
 } from 'devextreme-angular';
+import { ClientService } from 'src/app/core/service/client.service';
 
 @Component({
   selector: 'app-index',
@@ -25,10 +26,15 @@ export class IndexComponent implements OnInit, AfterViewInit {
   public form: FormGroup;
   public mostrar: boolean = false;
 
+  ///public ident_Num: number = 0;
+  public ident_Num: FormControl;
+
   constructor(
-    private http: HttpClient,
     private formBuilder: FormBuilder,
+    private clientService: ClientService
     ) {
+
+      this.ident_Num = new FormControl('');
 
     this.client =
     {
@@ -63,14 +69,11 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-
-
-
-    this.GetClient('1').subscribe(
+    this.clientService.GetClient('2123313828').subscribe(
       (client)=>{
-        console.log(client);
-       // this.client = client;
-        this.client = {
+       // console.log(client);
+        this.client = client;
+        /*this.client = {
           IdClient:22,
           Name1:client.name1,
           Name2:client.name2,
@@ -78,7 +81,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
           LastName2:'fgdfgdfg',
           BirthDate: new Date("01/02/1900"),
           IdentNum: 33995
-        }
+        }*/
         this.form.patchValue(
          //  client
          {
@@ -95,10 +98,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
     if(this.myform) this.myform.instance.validate();
   }
 
-  GetClient( clientId: string): Observable<any> {
-    return this.http.get<any>(`${environment.url_api}/api/clients/` + clientId);
+  public findClient(){
+    console.log(this.ident_Num.value);
   }
-
   public createClient(e: any) {
     console.log(this.client);
   }

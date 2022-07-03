@@ -24,7 +24,7 @@ namespace billing_back.Controllers
 
 
         // GET: api/Clients/5
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
             var client = await _context.Client.FindAsync(id);
@@ -35,6 +35,29 @@ namespace billing_back.Controllers
             }
 
             return client;
+        }*/
+
+        [HttpGet("{id}")]
+        public async Task<Client> GetClientByIdentNum(int id)
+        {
+           
+
+        SqlParameter param1 = new SqlParameter(@"id_num", id);
+
+            string StoredProc = "EXEC  GetClientByIdentNum   @id_num";
+
+            var ClientReturn = await _context.Client.FromSqlRaw(StoredProc, param1).ToListAsync();
+
+            if (ClientReturn == null)
+            {
+                Client resultNUll = new Client(0);
+                return resultNUll;
+            }
+
+            Client result = ClientReturn[0];
+
+            return result;
+
         }
 
         // POST: api/Clients
