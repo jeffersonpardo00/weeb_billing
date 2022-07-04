@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace billing_back.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Product/")]
     [ApiController]
     public class InventoryController : ControllerBase
     {
@@ -22,7 +22,7 @@ namespace billing_back.Controllers
 
         // GET: api/Inventory/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Inventory>> GetClient(int id)
+        public async Task<ActionResult<Inventory>> GetProduct(int id)
         {
             var product = await _context.Inventory.FindAsync(id);
 

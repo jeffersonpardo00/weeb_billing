@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DxButtonModule, DxFormModule, DxDataGridModule} from 'devextreme-angular';
 
 import { BillingRoutingModule } from './billing-routing.module';
 import { IndexComponent } from './components/index/index.component';
-import { DxButtonModule, DxFormModule} from 'devextreme-angular';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { BillComponent } from './bill/bill.component';
 
 @NgModule({
   declarations: [
-    IndexComponent
+    IndexComponent,
+    BillComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DxButtonModule,
     DxFormModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DxDataGridModule
   ]
 })
 export class BillingModule { }

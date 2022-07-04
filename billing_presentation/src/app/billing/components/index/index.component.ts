@@ -1,16 +1,12 @@
 
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 import {
-  DxSelectBoxModule,
-  DxTextAreaModule,
-  DxFormModule,
   DxFormComponent,
 } from 'devextreme-angular';
 import { ClientService } from 'src/app/core/service/client.service';
+import { Client, ClientNull } from 'src/app/core/models/Client';
 
 @Component({
   selector: 'app-index',
@@ -25,6 +21,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   public colCountByScreen: object;
   public form: FormGroup;
   public mostrar: boolean = false;
+  public createNewClient: boolean = false;
 
   ///public ident_Num: number = 0;
   public ident_Num: FormControl;
@@ -36,17 +33,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
       this.ident_Num = new FormControl('');
 
-    this.client =
-    {
-      IdClient:22,
-      Name1:'dfsdsd',
-      Name2:'fgdfgdfg',
-      LastName1:'fgdfgdfg',
-      LastName2:'fgdfgdfg',
-      BirthDate: new Date("01/01/1900"),
-      IdentNum: 33
-    }
-    ;
+    this.client = ClientNull;
 
     this.colCountByScreen = {
       xs: 1,
@@ -69,38 +56,41 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    this.clientService.GetClient('2123313828').subscribe(
-      (client)=>{
-       // console.log(client);
-        this.client = client;
-        /*this.client = {
-          IdClient:22,
-          Name1:client.name1,
-          Name2:client.name2,
-          LastName1:'fgdfgdfg',
-          LastName2:'fgdfgdfg',
-          BirthDate: new Date("01/02/1900"),
-          IdentNum: 33995
-        }*/
-        this.form.patchValue(
-         //  client
-         {
-          Name1: client.name1,
-          Name2: client.name2
-         }
-        );
-      }
-    );
-
   }
 
   ngAfterViewInit() {
     if(this.myform) this.myform.instance.validate();
   }
 
-  public findClient(){
+  findClient(): void{
     console.log(this.ident_Num.value);
+    const id = this.ident_Num.value;
+    this.clientService.GetClient(id).subscribe(
+      (client)=>{
+        console.log(client);
+        this.setClientInfo(client);
+      }
+    );
   }
+
+  private setClientInfo(client: Client) : void {
+
+    if(this.IsClientEmpty(client)) {
+      this.createNewClient = true;
+      this.client = ClientNull;
+    }
+    else {
+      this.client = client;
+      this.createNewClient = false;
+    }
+
+  }
+  private IsClientEmpty( client: Client) : Boolean {
+    console.log(client);
+    if(client.idClient === 0) return true;
+    return false;
+  }
+
   public createClient(e: any) {
     console.log(this.client);
   }
