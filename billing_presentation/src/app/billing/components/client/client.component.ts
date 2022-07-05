@@ -12,10 +12,10 @@ import {
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit, OnChanges, AfterViewInit  {
+
   @ViewChild(DxFormComponent, { static: false }) myform: DxFormComponent | undefined;
   @Output() ClientEvent = new EventEmitter<Client>();
   @Output() newClientEvent = new EventEmitter<boolean>();
-
   @Input() entryClientId:  number;
 
   public colCountByScreen: object;
@@ -44,9 +44,7 @@ export class ClientComponent implements OnInit, OnChanges, AfterViewInit  {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("entró a ngOnChanges");
-    console.log(this.client);
-    this.client = ClientNull;
+
     if(this.entryClientId)
     this.findClient(this.entryClientId.toString());
   }
@@ -86,7 +84,6 @@ export class ClientComponent implements OnInit, OnChanges, AfterViewInit  {
 
   }
   private IsClientEmpty( client: Client) : Boolean {
-
     if(client.idClient === 0) return true;
     return false;
   }

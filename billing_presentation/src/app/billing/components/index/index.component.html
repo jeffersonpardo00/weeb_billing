@@ -1,11 +1,51 @@
 
   <div class="content-block dx-card responsive-paddings">
-
-    <input [formControl]="ident_Num" type="number">
+    <Label for="ident_Num">Ingresa el número de documento del cliente: </Label>
+    <input [formControl]="ident_Num" type="number" name="ident_Num">
     <button  (click)="sendClientId()">Buscar</button>
+    <code>
+      <p>Acá algunos numeros de identificación que ya existen:</p>
+        <table>
+          <tr>
+            <td> 2123313828
+              1666995819
+              1998200470
+              221885674
+              1628162946
+              2124121755
+              534213598
 
-</div>
+              </td>
+            <td>
+              1666995819
+              1998200470
+              221885674
+              1628162946
+              2124121755
+              534213598
+              1350138998
+            </td>
+            <td>
+              1350138998
+              1486184449
+              772999230
+              1335911513
+              1486184449
+              772999230
+              1335911513
+            </td>
+          </tr>
+        </table>
 
-<app-client (ClientEvent)="setClient($event)" (newClientEvent)="createNewClient=$event" [entryClientId] = "clientIdent_Num"></app-client>
+     </code>
+  </div>
 
-<app-bill (billPurchasesCreated)="closeTransaction($event)"></app-bill>
+
+
+
+<section *ngIf="IdNumFieldUsed">
+  <app-client (ClientEvent)="setClient($event)" (newClientEvent)="createNewClient=$event" [entryClientId] = "clientIdent_Num"></app-client>
+
+  <app-bill (billPurchasesCreated)="closeTransaction($event)"></app-bill>
+</section>
+

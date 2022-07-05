@@ -1,5 +1,5 @@
 
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {  FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Client, ClientNull } from 'src/app/core/models/Client';
@@ -11,26 +11,24 @@ import { BillPurchases } from 'src/app/core/models/BillPurchases';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
-export class IndexComponent implements OnInit, AfterViewInit {
+export class IndexComponent implements OnInit{
 
   public client: Client;
   public colCountByScreen: object;
-  public mostrar: boolean = false;
+  public IdNumFieldUsed: boolean;
   public createNewClient: boolean;
-  //public clientIdent_Num: Subject<number>;
   public clientIdent_Num: number;
-
-  ///public ident_Num: number = 0;
   public ident_Num: FormControl;
+
 
   constructor(
     ) {
 
-      this.ident_Num = new FormControl('');
-
+    this.ident_Num = new FormControl('');
     this.client = ClientNull;
     this.clientIdent_Num = 0;
     this.createNewClient = false;
+    this.IdNumFieldUsed = false;
     this.colCountByScreen = {
       xs: 1,
       sm: 2,
@@ -45,7 +43,10 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit() {
+  sendClientId(){
+    // cambia el dato enviado al componente cliente
+    this.clientIdent_Num = this.ident_Num.value;
+    this.IdNumFieldUsed = true;
   }
 
   setClient(outClient: Client){
@@ -54,15 +55,14 @@ export class IndexComponent implements OnInit, AfterViewInit {
     console.log(this.client);
   }
 
-  sendClientId(){
-    this.clientIdent_Num = this.ident_Num.value;
-  }
+
 
   closeTransaction(billPurchases: BillPurchases){
     console.log(billPurchases);
+    this.createClient();
   }
 
-  public createClient(e: any) {
+  public createClient() {
     if(this.createNewClient) console.log("crear cliente");
     console.log(this.client);
   }
