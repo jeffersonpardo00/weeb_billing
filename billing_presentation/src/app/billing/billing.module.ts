@@ -6,12 +6,14 @@ import { DxButtonModule, DxFormModule, DxDataGridModule} from 'devextreme-angula
 
 import { BillingRoutingModule } from './billing-routing.module';
 import { IndexComponent } from './components/index/index.component';
-import { BillComponent } from './bill/bill.component';
+import { BillComponent } from './components/bill/bill.component';
+import { ClientComponent } from './components/client/client.component';
 
 @NgModule({
   declarations: [
     IndexComponent,
-    BillComponent
+    BillComponent,
+    ClientComponent
   ],
   imports: [
     CommonModule,

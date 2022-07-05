@@ -48,7 +48,7 @@ namespace billing_back.Controllers
 
             var ClientReturn = await _context.Client.FromSqlRaw(StoredProc, param1).ToListAsync();
 
-            if (ClientReturn == null)
+            if (ClientReturn.Count <= 0)
             {
                 Client resultNUll = new Client(0);
                 return resultNUll;
