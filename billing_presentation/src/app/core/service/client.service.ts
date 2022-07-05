@@ -16,4 +16,10 @@ export class ClientService {
     return this.http.get<Client>(`${environment.url_api}/api/clients/` + clientId);
   }
 
+  createClient(client: Client){
+    console.log("createClient");
+    console.log(client);
+    return this.http.post(`${environment.url_api}/api/Clients/`, client);
+  }
+
 }

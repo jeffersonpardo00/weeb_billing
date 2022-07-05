@@ -60,9 +60,6 @@ export class ClientComponent implements OnInit, OnChanges, AfterViewInit  {
 
   findClient(ident_Num: string): void{
 
-    console.log("entró a findClient");
-    console.log(ident_Num);
-
     this.clientService.GetClient(ident_Num).subscribe(
       (client)=>{
         this.setClientInfo(client);
@@ -81,7 +78,7 @@ export class ClientComponent implements OnInit, OnChanges, AfterViewInit  {
       this.client = client;
       this.createNewClient = false;
     }
-
+    this.newClientEvent.emit(this.createNewClient);
   }
   private IsClientEmpty( client: Client) : Boolean {
     if(client.idClient === 0) return true;

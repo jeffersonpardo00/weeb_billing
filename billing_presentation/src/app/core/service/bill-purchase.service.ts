@@ -11,6 +11,10 @@ export class BillPurchaseService {
   constructor( private http: HttpClient  ) { }
 
   CreateBillPurchase(billPurchases: BillPurchases){
+    console.log("CreateBillPurchase service");
+    console.log(billPurchases);
+
+   // return this.http.post('https://localhost:44375/api/BillPuchases', billPurchases);
     return this.http.post(`${environment.url_api}/api/BillPuchases/`, billPurchases);
   }
 

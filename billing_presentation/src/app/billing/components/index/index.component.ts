@@ -5,6 +5,8 @@ import {  FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client, ClientNull } from 'src/app/core/models/Client';
 import { Subject } from 'rxjs';
 import { BillPurchases } from 'src/app/core/models/BillPurchases';
+import { BillPurchaseService } from 'src/app/core/service/bill-purchase.service';
+import { ClientService } from 'src/app/core/service/client.service';
 
 @Component({
   selector: 'app-index',
@@ -22,6 +24,8 @@ export class IndexComponent implements OnInit{
 
 
   constructor(
+    private billPurchaseService: BillPurchaseService,
+    private clientService: ClientService
     ) {
 
     this.ident_Num = new FormControl('');
@@ -58,12 +62,18 @@ export class IndexComponent implements OnInit{
 
 
   closeTransaction(billPurchases: BillPurchases){
-    console.log(billPurchases);
+
     this.createClient();
+    billPurchases.bill.IdClient = this.client.idClient;
+    console.log(billPurchases);
+    this.billPurchaseService.CreateBillPurchase(billPurchases).subscribe(()=>console.log('CreateBillPurchase success'));
   }
 
   public createClient() {
-    if(this.createNewClient) console.log("crear cliente");
+    if(this.createNewClient)
+    this.clientService.createClient(this.client).subscribe(()=>console.log('createClient success'));
+
+    ;
     console.log(this.client);
   }
 
