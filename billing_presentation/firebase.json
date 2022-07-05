@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/billing_presentation",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+<div class="content-block dx-card responsive-paddings">
+
+  <dx-form id="formProductField"
+  [formData]="productField"
+  >
+      <dxi-item dataField="idProduct"></dxi-item>
+      <dxi-item dataField="numItems"></dxi-item>
+  </dx-form>
+
+  <button (click)="addProduct()">
+    Agregar Producto
+  </button>
+
+</div>
+
+<div class="content-block dx-card responsive-paddings">
+  <dx-data-grid
+  id="gridContainer"
+  [dataSource]="products"
+  keyExpr="idProduct"
+  [columns]="['idProduct', 'productName', 'numItems', 'purchaseCost']"
+  [showBorders]="true"
+  >
+  </dx-data-grid>
+  <button (click)="sendBill()">
+    Pagar Factura
+  </button>
+</div>

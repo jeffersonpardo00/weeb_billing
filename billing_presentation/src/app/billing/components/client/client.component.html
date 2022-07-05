@@ -1,0 +1,35 @@
+<div *ngIf="createNewClient" class="content-block dx-card responsive-paddings">
+
+  <dx-form id="form"
+  [formData]="client"
+  labelLocation="top"
+  [colCountByScreen]="colCountByScreen"
+  >
+      <dxi-item dataField="name1"></dxi-item>
+      <dxi-item dataField="name2"></dxi-item>
+      <dxi-item dataField="lastName1"></dxi-item>
+      <dxi-item dataField="lastName2"></dxi-item>
+      <dxi-item dataField="birthDate"></dxi-item>
+      <dxi-item dataField="identNum"></dxi-item>
+  </dx-form>
+
+  <button  (click)="updateClient()">Crear Cliente</button>
+
+</div>
+
+<div *ngIf="!createNewClient" class="content-block dx-card responsive-paddings">
+
+  <dx-form id="form"
+  [formData]="client"
+  labelLocation="top"
+  [colCountByScreen]="colCountByScreen"
+  >
+      <dxi-item dataField="name1" [editorOptions]="{ disabled: true }"></dxi-item>
+      <dxi-item dataField="name2" [editorOptions]="{ disabled: true }"></dxi-item>
+      <dxi-item dataField="lastName1" [editorOptions]="{ disabled: true }"></dxi-item>
+      <dxi-item dataField="lastName2" [editorOptions]="{ disabled: true }"></dxi-item>
+      <dxi-item dataField="birthDate" [editorOptions]="{ disabled: true }"></dxi-item>
+      <dxi-item dataField="identNum" [editorOptions]="{ disabled: true }"></dxi-item>
+  </dx-form>
+
+</div>
